@@ -1,5 +1,5 @@
 SRC		= megaphone.cpp	
-OBJ		= $(SRC:.c=.o)
+OBJ		= $(SRC:.cpp=.o)
 NAME		= megaphone
 FLAGS		= -Wall -Wextra -Werror -std=c++98
 CC		= clang++
