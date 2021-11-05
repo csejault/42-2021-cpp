@@ -6,7 +6,7 @@
 /*   By: csejault <csejault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:46:31 by csejault          #+#    #+#             */
-/*   Updated: 2021/11/05 12:46:35 by csejault         ###   ########.fr       */
+/*   Updated: 2021/11/05 16:12:23 by csejault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ class	contact
 					contact(void);
 					~contact(void);
 		int			new_contact(int idx, std::string fn, std::string ln, std::string nn, std::string p, std::string _s);
-//		std::string	get_secret(void) const;
-//		int			set_secret(std::string new_value);
+		void		print(void);
 
 	private:
 		static contact	*contacts;

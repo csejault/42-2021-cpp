@@ -6,7 +6,7 @@
 /*   By: csejault <csejault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:29:30 by csejault          #+#    #+#             */
-/*   Updated: 2021/11/05 13:15:43 by csejault         ###   ########.fr       */
+/*   Updated: 2021/11/05 13:37:16 by csejault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ display_line::~display_line(void)
 
 std::string	display_line::trunk(std::string to_trunk)
 {
+
 	to_trunk.resize(10);
+	to_trunk.shrink_to_fit();
 	to_trunk[9] = '.';
 	return (to_trunk);
 }

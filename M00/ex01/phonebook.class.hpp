@@ -6,7 +6,7 @@
 /*   By: csejault <csejault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 17:08:05 by csejault          #+#    #+#             */
-/*   Updated: 2021/11/05 12:48:51 by csejault         ###   ########.fr       */
+/*   Updated: 2021/11/05 15:52:23 by csejault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "contact.class.hpp"
 # include "display_line.class.hpp"
 # include <iostream>
-# define INST_MAX 3
+# include <iomanip>
+# define INST_MAX 8
 
 class	phonebook
 {
@@ -31,8 +32,9 @@ class	phonebook
 				~phonebook(void);
 
 		int 	add(void);
-		void	search(void) const;
+		int		search(void);
 		int		read_data(void);
+		int		check_searched_data(std::string instruction) const;
 		int		check_data(void) const;
 
 	private:

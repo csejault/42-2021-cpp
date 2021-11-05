@@ -6,7 +6,7 @@
 /*   By: csejault <csejault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 10:51:14 by csejault          #+#    #+#             */
-/*   Updated: 2021/11/05 12:45:09 by csejault         ###   ########.fr       */
+/*   Updated: 2021/11/05 16:14:46 by csejault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@ int	contact::new_contact(int idx, std::string fn, std::string ln, std::string nn
    	this->_secret = _s;
 
 	return (0);
+}
+
+void	contact::print(void)
+{
+	std::cout << "first name : " << this->f_name << std::endl;
+	std::cout << "last name : " << this->l_name << std::endl;
+	std::cout << "nickname : " << this->n_name << std::endl;
+	std::cout << "phone number : " << this->phone << std::endl;
+	std::cout << "Darkest secret : " << this->_secret << std::endl;
+
+	return;
 }
 
 	contact::contact(void)
