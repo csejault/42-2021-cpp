@@ -6,7 +6,7 @@
 /*   By: csejault <csejault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 17:11:51 by csejault          #+#    #+#             */
-/*   Updated: 2021/11/04 18:44:33 by csejault         ###   ########.fr       */
+/*   Updated: 2021/11/05 12:44:58 by csejault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ phonebook::phonebook(void)
 phonebook::~phonebook(void)
 {
 	return;
+}
+
+void	phonebook::search(void) const
+{
+	display_line l_to_print;
+	 	
+	int i = 0;
+	std::cout << "     index|first name| last name|  nickname" << std::endl;
+	while (i < phonebook::_nb_added)
+	{
+		l_to_print.print(this->contacts[i]);
+		i++;
+	}
 }
 
 int		phonebook::read_data(void)
@@ -61,23 +74,20 @@ int		phonebook::check_data(void) const
 	while(this->tmp_phone[i])
 	{
 		if (!isdigit(tmp_phone[i]))
-			return (-1);
+	{
+		std::cout << "Error, Wrong format." << std::endl;
+		return (-1);
+	}
 		i++;
+	}
+	if (!this->tmp_f_name.compare("") && !this->tmp_l_name.compare("") && !this->tmp_n_name.compare(""))
+	{
+		std::cout << "Error, empty contact" << std::endl;
+		return (-1);
 	}
 	return (0);
 }
 
-void	phonebook::print_test(void) const
-{
-	int i;
-
-	i = 0;
-	while (i < phonebook::_nb_added)
-	{
-		std::cout << this->contacts[i].f_name << " is present" << std::endl;
-		i++;
-	}
-}
 
 int		phonebook::add(void)
 {
@@ -92,10 +102,7 @@ int		phonebook::add(void)
 		return (-1);
 	}
 	if (phonebook::check_data() < 0)
-	{
-		std::cout << "Error wrong data in the input" << std::endl;
 		return (0);
-	}
 	contacts[phonebook::_nb_added].new_contact(phonebook::_nb_added, this->tmp_f_name, this->tmp_l_name, this->tmp_n_name, this->tmp_phone, this->_tmp_secret);
 	std::cout << contacts[phonebook::_nb_added].f_name << " successdully added to the Phonebook!" << std::endl;
 	phonebook::_nb_added++;

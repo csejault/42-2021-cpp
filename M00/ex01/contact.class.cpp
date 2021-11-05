@@ -6,15 +6,15 @@
 /*   By: csejault <csejault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 10:51:14 by csejault          #+#    #+#             */
-/*   Updated: 2021/11/04 18:40:00 by csejault         ###   ########.fr       */
+/*   Updated: 2021/11/05 12:45:09 by csejault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "contact.class.hpp"
 
-int	contact::new_contact(int index, std::string fn, std::string ln, std::string nn, std::string p, std::string _s)
+int	contact::new_contact(int idx, std::string fn, std::string ln, std::string nn, std::string p, std::string _s)
 {
-	this->index_nb = index;
+	this->index = idx;
 	this->f_name = fn;
    	this->l_name = ln;
    	this->n_name = nn;

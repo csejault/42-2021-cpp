@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.class.hpp                                :+:      :+:    :+:   */
+/*   display_line.class.hpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csejault <csejault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 17:08:05 by csejault          #+#    #+#             */
-/*   Updated: 2021/11/05 12:48:51 by csejault         ###   ########.fr       */
+/*   Created: 2021/11/04 19:27:48 by csejault          #+#    #+#             */
+/*   Updated: 2021/11/05 13:10:53 by csejault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_CLASS_HPP
-# define PHONEBOOK_CLASS_HPP
+#ifndef DISPLAY_LINE_CLASS_HPP
+# define DISPLAY_LINE_CLASS_HPP
 
 # include "contact.class.hpp"
-# include "display_line.class.hpp"
 # include <iostream>
-# define INST_MAX 3
+# include <iomanip>
 
-class	phonebook
+class	display_line
 {
 	public:
-		contact		contacts[8];
-		std::string	tmp_f_name;
-		std::string	tmp_l_name;
-		std::string	tmp_n_name;
-		std::string	tmp_phone;
+		std::string	c1;
+		std::string	c2;
+		std::string	c3;
+		std::string	c4;
 				
-				phonebook(void);
-				~phonebook(void);
-
-		int 	add(void);
-		void	search(void) const;
-		int		read_data(void);
-		int		check_data(void) const;
-
-	private:
-		static int		_nb_added;
-		std::string		_tmp_secret;
+		display_line(void);
+		~display_line(void);
+		void	print(contact contact);
+		std::string trunk(std::string to_trunk);		
 };
 #endif
