@@ -6,7 +6,7 @@
 /*   By: csejault <csejault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 16:28:45 by csejault          #+#    #+#             */
-/*   Updated: 2021/11/08 14:10:17 by csejault         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:15:32 by csejault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,46 @@ Account::~Account( void )
 }
 
 
+
 int	Account::getNbAccounts( void )
 {
 	return (Account::_nbAccounts);
 }
 
+
+
 int	Account::getTotalAmount( void )
 {
 	return (Account::_totalAmount);
 }
+
+
+
+int	Account::getNbDeposits( void )
+{
+	return (Account::_totalNbDeposits);
+}
+
+
+
+int	Account::getNbWithdrawals( void )
+{
+	return (Account::_totalNbWithdrawals);
+}
+
+
+
+void	Account::displayAccountsInfos( void )
+{
+	std::cout << "=== Accounts infos ===" << std::endl;
+	Account::_displayTimestamp();
+	std::cout << std::setw(21) << "NB Accounts|" << std::setw(21) << "Total Amount|" << std::setw(21) << "Total deposits|" << std::setw(20) << "Total withdrawals" << std::endl;
+	std::cout << std::setw(20) << Account::_nbAccounts << "|" << std::setw(20) << Account::_totalAmount << "|" << std::setw(20) << Account::_totalNbDeposits << "|" <<  std::setw(20) << Account::_totalNbWithdrawals << std::endl;
+	std::cout << std::endl;
+	return;
+}
+
+
 
 void	Account::makeDeposit( int deposit )
 {
@@ -61,6 +92,8 @@ void	Account::makeDeposit( int deposit )
 	this->displayStatus();
 	return;
 }
+
+
 
 bool	Account::makeWithdrawal( int withdrawal )
 {
@@ -77,20 +110,13 @@ bool	Account::makeWithdrawal( int withdrawal )
 	return (1);
 }
 
+
+
 int		Account::checkAmount( void ) const
 {
 	return (this->_amount);
 }
 
-int	Account::getNbDeposits( void )
-{
-	return (Account::_totalNbDeposits);
-}
-
-int	Account::getNbWithdrawals( void )
-{
-	return (Account::_totalNbWithdrawals);
-}
 
 void	Account::displayStatus( void ) const
 {
@@ -103,6 +129,7 @@ void	Account::displayStatus( void ) const
 }
 
 
+
 void	Account::_displayTimestamp( void )
 {
 	using namespace std::chrono;
@@ -113,16 +140,5 @@ void	Account::_displayTimestamp( void )
 
 	tt = system_clock::to_time_t ( today );
 	std::cout << "timestamp: " << ctime(&tt) << std::endl;
-	return;
-}
-
-
-void	Account::displayAccountsInfos( void )
-{
-	std::cout << "=== Accounts infos ===" << std::endl;
-	Account::_displayTimestamp();
-	std::cout << std::setw(21) << "NB Accounts|" << std::setw(21) << "Total Amount|" << std::setw(21) << "Total deposits|" << std::setw(20) << "Total withdrawals" << std::endl;
-	std::cout << std::setw(20) << Account::_nbAccounts << "|" << std::setw(20) << Account::_totalAmount << "|" << std::setw(20) << Account::_totalNbDeposits << "|" <<  std::setw(20) << Account::_totalNbWithdrawals << std::endl;
-	std::cout << std::endl;
 	return;
 }
