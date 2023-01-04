@@ -6,7 +6,7 @@
 /*   By: csejault <csejault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 17:11:51 by csejault          #+#    #+#             */
-/*   Updated: 2021/11/05 16:18:27 by csejault         ###   ########.fr       */
+/*   Updated: 2021/11/09 14:23:43 by csejault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,15 @@ int		phonebook::check_searched_data(std::string instruction) const
 	return (0);
 }
 
-int		phonebook::search(void)
+int		phonebook::search(void) const
 {
-	display_line	l_to_print;
 	std::string		instruction;
 
 	int i = 0;
 	std::cout << std::setw(11) << "index|" << std::setw(11) <<"first name|" << std::setw(11) << "last name|" << std::setw(10) << "nickname" << std::endl;
 	while (i < phonebook::_nb_added)
 	{
-		l_to_print.print(this->contacts[i]);
+		this->_contacts[i].print_short();
 		i++;
 	}
 	std::cout << "Which index do you want : ";
@@ -69,26 +68,26 @@ int		phonebook::search(void)
 	if (phonebook::check_searched_data(instruction) < 0)
 		return (0);
 	else
-		contacts[instruction[0] - '0'].print();
+		this->_contacts[instruction[0] - '0'].print_full();
 	return (0);
 }
 
 int		phonebook::read_data(void)
 {
 	std::cout << "First name: ";
-	getline(std::cin, this->tmp_f_name);
+	getline(std::cin, this->_tmp_f_name);
 	if (!std::cin.good())
 		return (-1);
 	std::cout << "Last name: ";
-	getline(std::cin, this->tmp_l_name);
+	getline(std::cin, this->_tmp_l_name);
 	if (!std::cin.good())
 		return (-1);
 	std::cout << "Nickname: ";
-	getline(std::cin, this->tmp_n_name);
+	getline(std::cin, this->_tmp_n_name);
 	if (!std::cin.good())
 		return (-1);
 	std::cout << "Phone number: ";
-	getline(std::cin, this->tmp_phone);
+	getline(std::cin, this->_tmp_phone);
 	if (!std::cin.good())
 		return (-1);
 	std::cout << "Darkest secret: ";
@@ -103,20 +102,20 @@ int		phonebook::check_data(void) const
 	int i;
 
 
-	if (this->tmp_phone[0] == '+')
+	if (this->_tmp_phone[0] == '+')
 		i = 1;
 	else
 		i = 0;
-	while(this->tmp_phone[i])
+	while(this->_tmp_phone[i])
 	{
-		if (!isdigit(tmp_phone[i]))
+		if (!isdigit(_tmp_phone[i]))
 		{
 			std::cout << "Error, Wrong format." << std::endl;
 			return (-1);
 		}
 		i++;
 	}
-	if (!this->tmp_f_name.compare("") && !this->tmp_l_name.compare("") && !this->tmp_n_name.compare(""))
+	if (!this->_tmp_f_name.compare("") && !this->_tmp_l_name.compare("") && !this->_tmp_n_name.compare(""))
 	{
 		std::cout << "Error, empty contact" << std::endl;
 		return (-1);
@@ -139,8 +138,8 @@ int		phonebook::add(void)
 	}
 	if (phonebook::check_data() < 0)
 		return (0);
-	contacts[phonebook::_nb_added].new_contact(phonebook::_nb_added, this->tmp_f_name, this->tmp_l_name, this->tmp_n_name, this->tmp_phone, this->_tmp_secret);
-	std::cout << contacts[phonebook::_nb_added].f_name << " successdully added to the Phonebook!" << std::endl;
+	this->_contacts[phonebook::_nb_added].new_contact(phonebook::_nb_added, this->_tmp_f_name, this->_tmp_l_name, this->_tmp_n_name, this->_tmp_phone, this->_tmp_secret);
+	std::cout << this->_tmp_f_name << " successfully added to the Phonebook!" << std::endl;
 	phonebook::_nb_added++;
 	return (0);
 }

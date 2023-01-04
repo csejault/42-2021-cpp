@@ -1,29 +1,28 @@
-SRC		= \
-		  main.cpp \
-		  phonebook.class.cpp \
-		  contact.class.cpp \
-		  display_line.class.cpp
+SRC			= \
+			  main.cpp \
+			  phonebook.class.cpp \
+			  contact.class.cpp \
 
-OBJ		= $(SRC:.cpp=.o)
+OBJ			= $(SRC:.cpp=.o)
 NAME		= MyPhoneBook
 FLAGS		= -Wall -Wextra -Werror -std=c++98
-CC		= clang++
-RM		= rm -f
+CC			= clang++
+RM			= rm -f
 
-.c.o:		
-		$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
+.cpp.o:			
+				$(CC) $(FLAGS) -c $< -o $(<:.cpp=.o)
 
 
 all:		$(NAME) 
 
 $(NAME):	$(OBJ)
-		$(CC) $(FLAGS) -o $(NAME) $(OBJ)
+				$(CC) $(FLAGS) -o $(NAME) $(OBJ)
 
-clean:		
-			$(RM) $(OBJ)
+clean:			
+				$(RM) $(OBJ)
 
 fclean:		clean
-			$(RM) $(NAME)
+				$(RM) $(NAME)
 
 re:			fclean all
 
